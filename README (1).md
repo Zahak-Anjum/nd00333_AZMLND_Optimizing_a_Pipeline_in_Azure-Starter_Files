@@ -61,53 +61,9 @@ The trained model is then saved with **0.907** with best run ID **HD_5224b8d5-20
 ## AutoML
 
 AutoML uses the provided dataset to fit on a wide variety of algorithms. It supports classification, regression and time-series forecasting problem sets. The exit criteria is specified in order to stop the training which ensures the resources are not used once the objectives are met. This helps save on costs. Due to the fact that we were utilize a Udacity Virtual Machine for Azure we could only specify a length of 30 minutes for an experiment prior to it timing out. However we were able to iterate through the following model pipelines (with their results):
+                                       ![AutoML run details](automl_run.PNG)
 
-********************************************************************************************
 
- ITER   PIPELINE                                       DURATION            METRIC      BEST
-    0   MaxAbsScaler LightGBM                          0:00:31             0.9139    0.9139
-    1   MaxAbsScaler XGBoostClassifier                 0:00:36             0.9142    0.9142
-    2   MaxAbsScaler ExtremeRandomTrees                0:00:35             0.7336    0.9142
-    3   SparseNormalizer XGBoostClassifier             0:00:34             0.9135    0.9142
-    4   MaxAbsScaler LightGBM                          0:00:32             0.9134    0.9142
-    5   MaxAbsScaler LightGBM                          0:00:28             0.8880    0.9142
-    6   StandardScalerWrapper XGBoostClassifier        0:00:37             0.9056    0.9142
-    7   MaxAbsScaler LogisticRegression                0:00:32             0.9084    0.9142
-    8   StandardScalerWrapper ExtremeRandomTrees       0:00:31             0.8883    0.9142
-    9   StandardScalerWrapper XGBoostClassifier        0:00:37             0.9064    0.9142
-   10   SparseNormalizer LightGBM                      0:00:29             0.9045    0.9142
-   11   StandardScalerWrapper XGBoostClassifier        0:00:33             0.9127    0.9142
-   12   MaxAbsScaler LogisticRegression                0:00:35             0.9087    0.9142
-   13   MaxAbsScaler SGD                               0:00:30             0.8473    0.9142
-   14   StandardScalerWrapper XGBoostClassifier        0:00:32             0.9144    0.9144
-   15   SparseNormalizer RandomForest                  0:00:44             0.8188    0.9144
-   16   StandardScalerWrapper LogisticRegression       0:00:32             0.9084    0.9144
-   17   StandardScalerWrapper RandomForest             0:00:34             0.9008    0.9144
-   18   StandardScalerWrapper XGBoostClassifier        0:00:35             0.9128    0.9144
-   19   TruncatedSVDWrapper RandomForest               0:02:29             0.8172    0.9144
-   20   TruncatedSVDWrapper RandomForest               0:03:17             0.8297    0.9144
-   21   StandardScalerWrapper XGBoostClassifier        0:00:33             0.9125    0.9144
-   22   StandardScalerWrapper LightGBM                 0:00:36             0.9085    0.9144
-   23   MaxAbsScaler LightGBM                          0:00:30             0.8880    0.9144
-   24   StandardScalerWrapper XGBoostClassifier        0:00:54             0.9128    0.9144
-   25   StandardScalerWrapper XGBoostClassifier        0:00:31             0.8880    0.9144
-   26   MaxAbsScaler LightGBM                          0:00:31             0.9079    0.9144
-   27   StandardScalerWrapper XGBoostClassifier        0:01:05             0.8957    0.9144
-   28   StandardScalerWrapper ExtremeRandomTrees       0:01:21             0.8880    0.9144
-   29   VotingEnsemble                                 0:00:39             0.9177    0.9177
-   30   StackEnsemble                                  0:00:48             0.9141    0.9177
-Stopping criteria reached at iteration 31. Ending experiment.
-********************************************************************************************
-Current status: BestRunExplainModel. Best run model explanations started
-Current status: ModelExplanationDataSetSetup. Model explanations data setup completed
-Current status: PickSurrogateModel. Choosing LightGBM as the surrogate model for explanations
-Current status: EngineeredFeatureExplanations. Computation of engineered features started
-2022-02-23:23:50:03,85 INFO     [explanation_client.py:334] Using default datastore for uploads
-Current status: EngineeredFeatureExplanations. Computation of engineered features completed
-Current status: RawFeaturesExplanations. Computation of raw features started
-Current status: RawFeaturesExplanations. Computation of raw features completed
-Current status: BestRunExplainModel. Best run model explanations completed
-********************************************************************************************
 As you can observe many of the models were in the range 0.8-0.9, however at the end the the best algorithm ended up being the VotingEnsemble at an accuracy of 0.91772 with primary metric **accuracy** with best run ID **AutoML_c07ec4f2-bdbe-4a9f-bc3e-4e9cb04a293**.
 
 ## Pipeline comparison
